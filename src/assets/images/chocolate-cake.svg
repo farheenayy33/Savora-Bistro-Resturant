@@ -1,0 +1,18 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6D4C41;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3E2723;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="#f5f5f5"/>
+  <rect x="100" y="150" width="200" height="120" fill="url(#cakeGrad)" rx="10"/>
+  <ellipse cx="200" cy="140" rx="110" ry="40" fill="#8B4513"/>
+  <rect x="110" y="160" width="180" height="30" fill="#D7CCC8"/>
+  <rect x="120" y="190" width="160" height="30" fill="#D7CCC8"/>
+  <circle cx="150" cy="120" r="25" fill="#FFD54F" opacity="0.8"/>
+  <circle cx="250" cy="115" r="20" fill="#FFD54F" opacity="0.7"/>
+  <path d="M 200 100 L 210 80 L 190 80 Z" fill="#FF6F00"/>
+  <ellipse cx="200" cy="280" rx="80" ry="15" fill="#8B4513" opacity="0.4"/>
+  <text x="200" y="360" text-anchor="middle" font-size="20" fill="#666">Chocolate Lava Cake</text>
+</svg>
