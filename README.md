@@ -1,5 +1,4 @@
 
-
 # 🍽️ Savora Bistro – Restaurant Website
 
 Savora Bistro is a modern and responsive restaurant frontend website built using React JS. The project follows a component-based architecture and includes core restaurant features like menu display, cart functionality, and table booking.
@@ -39,19 +38,19 @@ This project demonstrates practical frontend development skills including state 
 git clone https://github.com/farheenayy33/Savora-Bistro-Resturant.git
 ```
 
-2. Navigate to the project folder:
+2.Navigate to the project folder:
 
 ```bash
 cd Savora-Bistro-Resturant
 ```
 
-3. Install dependencies:
+3.Install dependencies:
 
 ```bash
 npm install
 ```
 
-4. Start the development server:
+4.Start the development server:
 
 ```bash
 npm run dev
@@ -71,5 +70,3 @@ Farheen Laraib
 Frontend Developer (React)
 
 ---
-
-
