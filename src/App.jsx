@@ -9,8 +9,12 @@ import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import './tailwind.css';
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <AppProvider>
       <Router>
