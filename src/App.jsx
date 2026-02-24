@@ -13,6 +13,8 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
+    document.body.style.overflow = "auto";
+    window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
   }, []);
   return (
