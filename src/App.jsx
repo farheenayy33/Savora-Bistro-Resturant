@@ -12,11 +12,11 @@ import './tailwind.css';
 // import { useEffect } from "react";
 
 function App() {
-  // useEffect(() => {
-  //   document.body.style.overflow = "auto";
-  //   window.history.scrollRestoration = "manual";
-  //   window.scrollTo(0, 0);
-  // }, []);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <AppProvider>
       <Router>
