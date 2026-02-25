@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -9,14 +9,14 @@ import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import './tailwind.css';
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    document.body.style.overflow = "auto";
-    window.history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.overflow = "auto";
+  //   window.history.scrollRestoration = "manual";
+  //   window.scrollTo(0, 0);
+  // }, []);
   return (
     <AppProvider>
       <Router>
