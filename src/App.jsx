@@ -12,11 +12,11 @@ import './tailwind.css';
 // import { useEffect } from "react";
 
 function App() {
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [pathname]);
   return (
     <AppProvider>
       <Router>
