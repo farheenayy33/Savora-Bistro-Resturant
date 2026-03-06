@@ -1,57 +1,114 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedButton from './AnimatedButton';
 
 const HeroSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <section className="relative bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 text-white py-16 md:py-28 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}></div>
+    <section
+      className="h-screen bg-cover bg-center relative"
+      style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&h=1080&fit=crop')",
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Decorative Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 text-6xl opacity-20 animate-float-1">🍕</div>
+        <div className="absolute top-40 right-20 text-5xl opacity-20 animate-float-2">🍔</div>
+        <div className="absolute bottom-32 left-20 text-5xl opacity-20 animate-float-3">🍜</div>
+        <div className="absolute bottom-20 right-10 text-6xl opacity-20 animate-float-1">🍽️</div>
+        <div className="absolute top-1/3 left-1/4 text-4xl opacity-20 animate-float-2">🥗</div>
+        <div className="absolute top-1/2 right-1/3 text-4xl opacity-20 animate-float-3">🍰</div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          {/* Left Content */}
-          <div className="flex-1 text-center md:text-left animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-slide-up">
-              Welcome to Savora Bistro 🍽️
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-orange-100 max-w-2xl animate-slide-up">
-              Experience fine dining at its best. Fresh ingredients, exquisite flavors, and exceptional service.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center animate-slide-up">
-              <Link to="/menu">
-                <AnimatedButton variant="secondary" className="text-lg">
-                  View Menu
-                </AnimatedButton>
-              </Link>
-              <Link to="/contact">
-                <AnimatedButton variant="primary" className="text-lg bg-white text-orange-600 hover:bg-orange-50">
-                  Book a Table
-                </AnimatedButton>
-              </Link>
-            </div>
-          </div>
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center h-full text-center px-6">
+        <div className={`max-w-4xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h1
+            className="text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            style={{
+              animation: isVisible ? 'fadeSlideUp 1s ease-out 0.3s forwards' : 'none',
+              opacity: 0,
+            }}
+          >
+            Delicious Food For Your Life
+          </h1>
 
-          {/* Right - Animated Food Image */}
-          <div className="flex-1 hidden md:flex justify-center items-center animate-fade-in">
-            <div className="relative w-full max-w-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-              <img
-                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=600&fit=crop"
-                alt="Delicious Food"
-                className="relative w-full drop-shadow-2xl rounded-lg"
-                style={{
-                  animation: 'float 2s ease-in-out infinite',
-                }}
-              />
-            </div>
+          <p
+            className="text-gray-200 mt-6 text-lg md:text-xl max-w-2xl mx-auto mb-8"
+            style={{
+              animation: isVisible ? 'fadeSlideUp 1s ease-out 0.6s forwards' : 'none',
+              opacity: 0,
+            }}
+          >
+            Experience fine dining at its best. Fresh ingredients, exquisite flavors, and exceptional service crafted with love for you.
+          </p>
+
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8"
+            style={{
+              animation: isVisible ? 'fadeSlideUp 1s ease-out 0.9s forwards' : 'none',
+              opacity: 0,
+            }}
+          >
+            <Link to="/menu">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30">
+                View Menu
+              </button>
+            </Link>
+            <Link to="/contact">
+              <button className="bg-white hover:bg-gray-100 text-orange-600 px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                Book A Table
+              </button>
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-3 bg-white/70 rounded-full animate-pulse"></div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes fadeSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        .animate-float-1 {
+          animation: float 3s ease-in-out infinite;
+        }
+        .animate-float-2 {
+          animation: float 4s ease-in-out infinite 0.5s;
+        }
+        .animate-float-3 {
+          animation: float 3.5s ease-in-out infinite 1s;
+        }
+      `}</style>
     </section>
   );
 };

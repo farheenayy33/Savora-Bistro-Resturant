@@ -38,3 +38,5 @@ lerna-debug.log*
 
 # Temporary files (Claude Code)
 tmpclaude*/
+# Ignore todo file
+TODO.md

@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import CartPage from './pages/CartPage';
 import './tailwind.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/menu" element={<Menu />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/cart" element={<CartPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

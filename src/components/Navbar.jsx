@@ -10,8 +10,8 @@ const Navbar = () => {
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleCartClick = () => {
-    navigate('/menu');
-    setShowCart(true);
+    // Always navigate to cart page - it will show empty or filled state
+    navigate('/cart');
   };
 
   const handleLogout = () => {
@@ -36,33 +36,33 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-medium"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
             >
               Home
             </Link>
             <Link
               to="/menu"
-              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-medium"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
             >
               Menu
             </Link>
             <Link
               to="/contact"
-              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-medium"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
             >
               Contact
             </Link>
             {adminLoggedIn && (
               <Link
                 to="/admin"
-                className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-medium"
+                className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
               >
                 Admin
               </Link>
             )}
             <button
               onClick={handleCartClick}
-              className="relative text-gray-700 hover:text-orange-500 transition-colors duration-300 font-medium"
+              className="relative text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
             >
               Cart
               {cartItemCount > 0 && (
@@ -112,21 +112,21 @@ const Navbar = () => {
             <Link
               to="/"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300"
+              className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
             >
               Home
             </Link>
             <Link
               to="/menu"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300"
+              className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
             >
               Menu
             </Link>
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300"
+              className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
             >
               Contact
             </Link>
@@ -134,7 +134,7 @@ const Navbar = () => {
               <Link
                 to="/admin"
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300"
+                className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
               >
                 Admin
               </Link>
@@ -144,7 +144,7 @@ const Navbar = () => {
                 handleCartClick();
                 setIsOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300"
+              className="block w-full text-left px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
             >
               Cart ({cartItemCount})
             </button>

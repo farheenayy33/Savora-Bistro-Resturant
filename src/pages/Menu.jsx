@@ -1,12 +1,15 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import MenuItemCard from '../components/MenuItemCard';
 import MenuFilter from '../components/MenuFilter';
 import AnimatedButton from '../components/AnimatedButton';
+import AnimatedSection from '../components/AnimatedSection';
 
 const Menu = () => {
-  const { menuItems, cart, removeFromCart, updateCartQuantity, getCartTotal, showCart, setShowCart } = useApp();
+  const { menuItems, cart, removeFromCart, updateCartQuantity, getCartTotal, showCart, setShowCart, showToastMessage, clearCart } = useApp();
   const [activeCategory, setActiveCategory] = useState('All');
+  const navigate = useNavigate();
 
   const categories = useMemo(() => {
     const cats = [...new Set(menuItems.map(item => item.category))];
@@ -22,29 +25,40 @@ const Menu = () => {
 
   const cartTotal = getCartTotal();
 
+  const handleCheckout = () => {
+    showToastMessage('🎉 Congratulations! Your order has been placed successfully!');
+    clearCart();
+    setShowCart(false);
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Menu
-          </h1>
-          <p className="text-gray-600 text-lg">
-            Explore our delicious selection of dishes
-          </p>
-        </div>
+        <AnimatedSection animation="fadeSlideUp">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Our Menu
+            </h1>
+            <p className="text-gray-600 text-lg">
+              Explore our delicious selection of dishes
+            </p>
+          </div>
+        </AnimatedSection>
 
         {/* Cart Toggle Button */}
         {cart.length > 0 && (
-          <div className="mb-6 text-center">
-            <AnimatedButton
-              onClick={() => setShowCart(!showCart)}
-              variant="primary"
-            >
-              {showCart ? 'Hide' : 'View'} Cart ({cart.reduce((total, item) => total + item.quantity, 0)})
-            </AnimatedButton>
-          </div>
+          <AnimatedSection animation="fadeSlideUp" delay={0.1}>
+            <div className="mb-6 text-center">
+              <AnimatedButton
+                onClick={() => setShowCart(!showCart)}
+                variant="primary"
+              >
+                {showCart ? 'Hide' : 'View'} Cart ({cart.reduce((total, item) => total + item.quantity, 0)})
+              </AnimatedButton>
+            </div>
+          </AnimatedSection>
         )}
 
         {/* Cart Sidebar */}
@@ -122,7 +136,7 @@ const Menu = () => {
                     <span className="text-lg font-bold text-gray-900">Total:</span>
                     <span className="text-3xl font-bold text-orange-600">${cartTotal.toFixed(2)}</span>
                   </div>
-                  <AnimatedButton variant="primary" className="w-full mb-2">
+                  <AnimatedButton variant="primary" className="w-full mb-2" onClick={handleCheckout}>
                     Proceed to Checkout
                   </AnimatedButton>
                   <button
@@ -138,11 +152,13 @@ const Menu = () => {
         )}
 
         {/* Filter */}
-        <MenuFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          onFilterChange={setActiveCategory}
-        />
+        <AnimatedSection animation="fadeSlideUp" delay={0.15}>
+          <MenuFilter
+            categories={categories}
+            activeCategory={activeCategory}
+            onFilterChange={setActiveCategory}
+          />
+        </AnimatedSection>
 
         {/* Menu Items Grid */}
         {filteredItems.length === 0 ? (
@@ -155,8 +171,10 @@ const Menu = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item) => (
-              <MenuItemCard key={item.id} item={item} />
+            {filteredItems.map((item, index) => (
+              <AnimatedSection key={item.id} animation="scaleUp" delay={index * 0.05}>
+                <MenuItemCard item={item} />
+              </AnimatedSection>
             ))}
           </div>
         )}
