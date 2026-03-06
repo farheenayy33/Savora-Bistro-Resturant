@@ -9,11 +9,9 @@ import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import './tailwind.css';
-// import { useEffect } from "react";
 
 function App() {
   // const { pathname } = useLocation();
-
   // useEffect(() => {
   //   window.scrollTo(0, 0);
   // }, [pathname]);
@@ -28,6 +26,7 @@ function App() {
               <Route path="/menu" element={<Menu />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
+              {/* <Route path="/cart" element={<Cart />} /> */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
