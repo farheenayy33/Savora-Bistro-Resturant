@@ -1,0 +1,26 @@
+version: 2
+updates:
+  # Regular dependency updates
+  - package-ecosystem: "npm"       # React and JS packages
+    directory: "/"                 # where package.json lives
+    schedule:
+      interval: "weekly"           # update weekly
+    commit-message:
+      prefix: "chore"              # prefix for auto-generated commits
+    open-pull-requests-limit: 5    # avoid flooding PRs
+    rebase-strategy: "auto"        # automatically rebase if needed
+    ignore:
+      - dependency-name: "react-scripts"
+        versions: ["<5.0.0"]       # optional: ignore old versions if desired
+
+  # Security updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"            # check for vulnerabilities daily
+    commit-message:
+      prefix: "fix"                # security fixes get "fix" prefix
+    open-pull-requests-limit: 5
+    allow:
+      - dependency-type: "all"     # include devDependencies & dependencies
+   
