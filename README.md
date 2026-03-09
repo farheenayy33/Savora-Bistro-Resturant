@@ -8,9 +8,9 @@ Savora Bistro is a modern and responsive restaurant website built with React JS.
 
 🌐 **Live Website:** [https://savorabistrocom.vercel.app]
 
-  <p align="center">
-  <video src="assets/video/Demo.mp4" width="800" controls></video>
-</p>
+-- <p align="center">
+        <video src="assets/images/video/Demo.mp4" width="800" controls></video>
+    </p>
 
 ---
 
@@ -72,26 +72,31 @@ src/
 ## 📦 Installation & Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/farheenayy33/Savora-Bistro-Resturant.
    ```
 
 2. **Navigate to the project folder:**
+
      ```bash
    cd Savora-Bistro-Resturant
    ```
 
 3. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 4. **Start the development server:**
+
    ```bash
    npm run dev
    ```
 
 5. **Build for production:**
+
    ```bash
    npm run build
    ```
@@ -101,6 +106,7 @@ src/
 ## 🎯 Purpose
 
 This project was built to demonstrate:
+
 - React functional components and hooks
 - Component-based architecture
 - State management with React Context
@@ -113,6 +119,7 @@ This project was built to demonstrate:
 ## 👩‍💻 Author
 
 **Farheen Laraib**
+
 - Frontend Developer (React)
 - GitHub: [@farheenayy33](https://github.com/farheenayy33)
 
