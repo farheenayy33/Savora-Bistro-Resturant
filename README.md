@@ -8,10 +8,10 @@ Savora Bistro is a modern and responsive restaurant website built with React JS.
 
 🌐 **Live Website:** [https://savorabistrocom.vercel.app]
 
-<video controls src="./src/assets/media/Demo.mp4" title="Title"></video>
-<video controls src="src/assets/media/Demo.mp4" title="Title"></video>
+<!-- <video controls src="./src/assets/media/Demo.mp4" title="Title"></video>
+<video controls src="src/assets/media/Demo.mp4" title="Title"></video> -->
 
-## ✨ Features
+## ✨ Feature<video controls src="Demo-1.mp4" title="Title"></video>
 
 - 🏠 **Home Page** - Hero section with animated content and featured dishes
 - 📋 **Menu Page** - Browse food items with categories (Starters, Mains, Desserts, Drinks)
