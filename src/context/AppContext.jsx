@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import {
   getMenuItems,
   getCart,
@@ -35,12 +35,12 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   // Update menu items
-  const updateMenuItems = () => {
+  const updateMenuItems = useCallback(() => {
     setMenuItems(getMenuItems());
-  };
+  }, []);
 
   // Cart functions
-  const addToCart = (item) => {
+  const addToCart = useCallback((item) => {
     const updatedCart = getCart();
     const existingItem = updatedCart.find(cartItem => cartItem.id === item.id);
 
@@ -53,15 +53,15 @@ export const AppProvider = ({ children }) => {
     saveCart(updatedCart);
     setCart(updatedCart);
     showToastMessage(`${item.name} added to cart!`);
-  };
+  }, []);
 
-  const removeFromCart = (id) => {
+  const removeFromCart = useCallback((id) => {
     const updatedCart = getCart().filter(item => item.id !== id);
     saveCart(updatedCart);
     setCart(updatedCart);
-  };
+  }, []);
 
-  const updateCartQuantity = (id, quantity) => {
+  const updateCartQuantity = useCallback((id, quantity) => {
     const updatedCart = getCart();
     const item = updatedCart.find(item => item.id === id);
     if (item) {
@@ -73,19 +73,19 @@ export const AppProvider = ({ children }) => {
       saveCart(updatedCart);
       setCart(updatedCart);
     }
-  };
+  }, [removeFromCart]);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     localStorage.removeItem('cart');
     setCart([]);
-  };
+  }, []);
 
-  const getCartTotal = () => {
+  const getCartTotal = useCallback(() => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+  }, [cart]);
 
   // Admin functions
-  const loginAdmin = (password) => {
+  const loginAdmin = useCallback((password) => {
     // Simple password check (in production, use proper authentication)
     if (password === 'admin123') {
       setAdminLogin(true);
@@ -93,23 +93,25 @@ export const AppProvider = ({ children }) => {
       return true;
     }
     return false;
-  };
+  }, []);
 
-  const logoutAdmin = () => {
+  const logoutAdmin = useCallback(() => {
     setAdminLogin(false);
     setAdminLoggedInState(false);
-  };
+  }, []);
 
   // Toast notification
-  const showToastMessage = (message) => {
+  const showToastMessage = useCallback((message) => {
     setToastMessage(message);
     setShowToast(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setShowToast(false);
     }, 3000);
-  };
+    return () => clearTimeout(timer);
+  }, []);
 
-  const value = {
+  // Memoize context value to prevent unnecessary re-renders
+  const value = useMemo(() => ({
     menuItems,
     updateMenuItems,
     cart,
@@ -126,7 +128,23 @@ export const AppProvider = ({ children }) => {
     showToastMessage,
     showCart,
     setShowCart,
-  };
+  }), [
+    menuItems,
+    updateMenuItems,
+    cart,
+    addToCart,
+    removeFromCart,
+    updateCartQuantity,
+    clearCart,
+    getCartTotal,
+    adminLoggedIn,
+    loginAdmin,
+    logoutAdmin,
+    showToast,
+    toastMessage,
+    showToastMessage,
+    showCart,
+  ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

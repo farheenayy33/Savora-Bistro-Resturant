@@ -1,6 +1,6 @@
 # 🍽️ Savora Bistro – Restaurant Website
 
-Savora Bistro is a modern and responsive restaurant website built with React JS. It features a beautiful UI with menu display, shopping cart, table reservations, and an admin dashboard for managing the restaurant.
+Savora Bistro is a modren and responsive restaurant website built with React JS. It features a beautiful UI with menu display, shopping cart, table reservations, and an admin dashboard for managing the restaurant.
 
 ---
 

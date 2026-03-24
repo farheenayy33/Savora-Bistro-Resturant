@@ -1,17 +1,47 @@
-import React, { useState } from 'react';
+import React, { memo, useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 
+// Extracted NavLink component for reusability
+const NavLink = memo(({ to, label, onClick, activeMobile }) => (
+  <Link
+    to={to}
+    onClick={onClick}
+    className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
+  >
+    {label}
+  </Link>
+));
+
+NavLink.displayName = 'NavLink';
+
+// Extracted MobileNavLink component
+const MobileNavLink = memo(({ to, label, onClick }) => (
+  <Link
+    to={to}
+    onClick={onClick}
+    className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
+  >
+    {label}
+  </Link>
+));
+
+MobileNavLink.displayName = 'MobileNavLink';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { adminLoggedIn, logoutAdmin, cart, showCart, setShowCart } = useApp();
+  const { adminLoggedIn, logoutAdmin, cart } = useApp();
   const navigate = useNavigate();
 
-  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  // Memoize cart item count calculation
+  const cartItemCount = useMemo(() => 
+    cart.reduce((total, item) => total + item.quantity, 0),
+    [cart]
+  );
 
   const handleCartClick = () => {
-    // Always navigate to cart page - it will show empty or filled state
     navigate('/cart');
+    setIsOpen(false);
   };
 
   const handleLogout = () => {
@@ -19,6 +49,9 @@ const Navbar = () => {
     navigate('/');
     setIsOpen(false);
   };
+
+  const toggleMobileMenu = () => setIsOpen(!isOpen);
+  const closeMobileMenu = () => setIsOpen(false);
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -34,32 +67,11 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
-            >
-              Home
-            </Link>
-            <Link
-              to="/menu"
-              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
-            >
-              Menu
-            </Link>
-            <Link
-              to="/contact"
-              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
-            >
-              Contact
-            </Link>
-            {adminLoggedIn && (
-              <Link
-                to="/admin"
-                className="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
-              >
-                Admin
-              </Link>
-            )}
+            <NavLink to="/" label="Home" />
+            <NavLink to="/menu" label="Menu" />
+            <NavLink to="/contact" label="Contact" />
+            {adminLoggedIn && <NavLink to="/admin" label="Admin" />}
+            
             <button
               onClick={handleCartClick}
               className="relative text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold text-lg"
@@ -71,6 +83,7 @@ const Navbar = () => {
                 </span>
               )}
             </button>
+            
             {adminLoggedIn && (
               <button
                 onClick={handleLogout}
@@ -83,8 +96,9 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleMobileMenu}
             className="md:hidden text-gray-700 hover:text-orange-500 focus:outline-none"
+            aria-label="Toggle menu"
           >
             <svg
               className="h-6 w-6"
@@ -109,45 +123,20 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-            <Link
-              to="/"
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
-            >
-              Home
-            </Link>
-            <Link
-              to="/menu"
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
-            >
-              Menu
-            </Link>
-            <Link
-              to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
-            >
-              Contact
-            </Link>
+            <MobileNavLink to="/" label="Home" onClick={closeMobileMenu} />
+            <MobileNavLink to="/menu" label="Menu" onClick={closeMobileMenu} />
+            <MobileNavLink to="/contact" label="Contact" onClick={closeMobileMenu} />
             {adminLoggedIn && (
-              <Link
-                to="/admin"
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
-              >
-                Admin
-              </Link>
+              <MobileNavLink to="/admin" label="Admin" onClick={closeMobileMenu} />
             )}
+            
             <button
-              onClick={() => {
-                handleCartClick();
-                setIsOpen(false);
-              }}
+              onClick={handleCartClick}
               className="block w-full text-left px-3 py-3 text-gray-700 hover:text-orange-500 hover:bg-orange-50 rounded-md transition-colors duration-300 font-semibold text-lg"
             >
               Cart ({cartItemCount})
             </button>
+            
             {adminLoggedIn && (
               <button
                 onClick={handleLogout}
@@ -163,4 +152,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
