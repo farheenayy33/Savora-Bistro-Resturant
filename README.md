@@ -37,7 +37,6 @@ Savora Bistro is a modern and responsive restaurant website built with React JS.
 
 ## 📂 Project Structure
 
-```
 src/
 ├── components/       # Reusable UI components
 │   ├── Navbar.jsx
@@ -61,7 +60,6 @@ src/
 │   └── localStorageHelpers.js
 ├── App.jsx           # Main app component
 └── main.jsx          # Entry point
-```
 
 ---
 
@@ -96,7 +94,7 @@ src/
    ```bash
    npm run build
    ```
-   
+
 ---
 
 ## 🎯 Purpose
