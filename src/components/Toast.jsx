@@ -3,7 +3,6 @@ import { useApp } from '../context/AppContext';
 
 const Toast = memo(() => {
   const { showToast, toastMessage } = useApp();
-
   const toastContent = useMemo(() => {
     if (!showToast) return null;
 
@@ -32,7 +31,6 @@ const Toast = memo(() => {
 
   return toastContent;
 }, (prevProps, nextProps) => {
-  // Toast renders rarely, so simple equality check is fine
   return true;
 });
 
