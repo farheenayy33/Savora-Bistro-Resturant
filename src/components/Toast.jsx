@@ -28,12 +28,9 @@ const Toast = memo(() => {
       </div>
     );
   }, [showToast, toastMessage]);
-
   return toastContent;
 }, (prevProps, nextProps) => {
   return true;
 });
-
 Toast.displayName = 'Toast';
-
 export default Toast;
