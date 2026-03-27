@@ -8,7 +8,6 @@ const HeroSection = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
   return (
     <section
       className="h-screen bg-cover bg-center relative"
