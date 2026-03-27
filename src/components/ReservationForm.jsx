@@ -34,7 +34,7 @@ const ReservationForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
@@ -69,7 +69,6 @@ const ReservationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (validateForm()) {
       addReservation(formData);
       showToastMessage('Reservation submitted successfully!');
@@ -87,13 +86,11 @@ const ReservationForm = () => {
 
   // Get minimum date (today)
   const today = new Date().toISOString().split('T')[0];
-
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg">
       <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
         Book a Table
       </h2>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
         <div>
