@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-
 const AnimatedButton = memo(({
   children,
   onClick,
