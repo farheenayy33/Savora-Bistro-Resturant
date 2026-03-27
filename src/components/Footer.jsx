@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSection from './AnimatedSection';
 
+const QUICK_LINKS = [
+  { label: 'Home', path: '/' },
+  { label: 'Menu', path: '/menu' },
+  { label: 'Contact', path: '/contact' },
+];
+
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-gray-900 text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -41,21 +48,13 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-bold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/menu" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
-                    Menu
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
-                    Contact
-                  </Link>
-                </li>
+                {QUICK_LINKS.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </AnimatedSection>
@@ -104,4 +103,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer); currentYear

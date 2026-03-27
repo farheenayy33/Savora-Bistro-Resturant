@@ -119,10 +119,12 @@ This project was built to demonstrate:
 
 ---
 
+<p align="center">Made with ❤️ by Farheen Laraib</p>
+
 ## 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-<p align="center">Made with ❤️ by Farheen Laraib</p>
+
