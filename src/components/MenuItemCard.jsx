@@ -4,7 +4,6 @@ import AnimatedButton from './AnimatedButton';
 
 const MenuItemCard = memo(({ item }) => {
   const { addToCart } = useApp();
-
   const handleAddToCart = useCallback(() => {
     addToCart(item);
   }, [item, addToCart]);
