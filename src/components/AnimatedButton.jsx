@@ -42,5 +42,4 @@ const AnimatedButton = memo(({
 });
 
 AnimatedButton.displayName = 'AnimatedButton';
-
 export default AnimatedButton;
