@@ -7,7 +7,6 @@ const MenuItemCard = memo(({ item }) => {
   const handleAddToCart = useCallback(() => {
     addToCart(item);
   }, [item, addToCart]);
-
   const handleImageError = useCallback((e) => {
     e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop';
   }, []);
@@ -53,5 +52,4 @@ const MenuItemCard = memo(({ item }) => {
 });
 
 MenuItemCard.displayName = 'MenuItemCard';
-
 export default MenuItemCard;
