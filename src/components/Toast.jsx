@@ -1,11 +1,9 @@
 import React, { memo, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
-
 const Toast = memo(() => {
   const { showToast, toastMessage } = useApp();
   const toastContent = useMemo(() => {
     if (!showToast) return null;
-
     return (
       <div className="fixed top-20 right-4 z-50 animate-slide-up pointer-events-auto">
         <div className="bg-green-500 text-white px-6 py-4 rounded-lg shadow-xl flex items-center space-x-3 min-w-[300px] max-w-[400px]">
