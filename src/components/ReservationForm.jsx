@@ -15,7 +15,6 @@ const ReservationForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -61,11 +60,9 @@ const ReservationForm = () => {
     if (!formData.guests || parseInt(formData.guests) < 1) {
       newErrors.guests = 'Number of guests must be at least 1';
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -82,7 +79,6 @@ const ReservationForm = () => {
       });
     }
   };
-
   // Get minimum date (today)
   const today = new Date().toISOString().split('T')[0];
   return (
