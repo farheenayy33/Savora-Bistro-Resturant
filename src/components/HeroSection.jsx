@@ -4,7 +4,6 @@ import AnimatedButton from './AnimatedButton';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -111,5 +110,4 @@ const HeroSection = () => {
     </section>
   );
 };
-
 export default HeroSection;
