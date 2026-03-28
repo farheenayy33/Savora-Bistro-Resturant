@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { addReservation } from '../utils/localStorageHelpers';
 import { useApp } from '../context/AppContext';
 import AnimatedButton from './AnimatedButton';
-
 const ReservationForm = () => {
   const { showToastMessage } = useApp();
   const [formData, setFormData] = useState({
@@ -125,7 +124,6 @@ const ReservationForm = () => {
           />
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
-
         {/* Phone */}
         <div>
           <label htmlFor="phone" className="block text-gray-700 font-semibold mb-2">
@@ -197,7 +195,6 @@ const ReservationForm = () => {
           {errors.guests && <p className="text-red-500 text-sm mt-1">{errors.guests}</p>}
         </div>
       </div>
-
       {/* Special Requests */}
       <div className="mt-6">
         <label htmlFor="specialRequests" className="block text-gray-700 font-semibold mb-2">
