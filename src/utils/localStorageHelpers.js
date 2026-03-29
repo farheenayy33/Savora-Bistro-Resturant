@@ -208,24 +208,6 @@ export const deleteReservation = (id) => {
   }
 };
 
-export const addReservation = (reservation) => {
-  const reservations = getReservations();
-  const newReservation = {
-    ...reservation,
-    id: Date.now().toString(),
-    createdAt: new Date().toISOString(),
-  };
-  reservations.push(newReservation);
-  saveReservations(reservations);
-  return newReservation;
-};
-
-export const deleteReservation = (id) => {
-  const reservations = getReservations();
-  const filtered = reservations.filter(res => res.id !== id);
-  saveReservations(filtered);
-};
-
 // Contact Submissions
 export const getContactSubmissions = () => {
   const submissions = localStorage.getItem('contactSubmissions');
