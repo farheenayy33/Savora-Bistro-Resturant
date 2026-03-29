@@ -7,9 +7,7 @@ import {
   setAdminLogin,
   initializeDefaultMenu,
 } from '../utils/localStorageHelpers';
-
 const AppContext = createContext();
-
 export const useApp = () => {
   const context = useContext(AppContext);
   if (!context) {
@@ -17,7 +15,6 @@ export const useApp = () => {
   }
   return context;
 };
-
 export const AppProvider = ({ children }) => {
   const [menuItems, setMenuItems] = useState([]);
   const [cart, setCart] = useState([]);
