@@ -9,7 +9,6 @@ const CartPage = () => {
     const navigate = useNavigate();
     const cartTotal = getCartTotal();
     const [isProcessing, setIsProcessing] = useState(false);
-
     const handleCheckout = () => {
         setIsProcessing(true);
         // Simulate processing
