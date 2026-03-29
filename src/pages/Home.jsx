@@ -5,7 +5,6 @@ import Testimonials from '../components/Testimonials';
 import AboutSection from '../components/AboutSection';
 
 const Home = () => {
-  
   return (
     <div className="min-h-screen">
       <HeroSection />
