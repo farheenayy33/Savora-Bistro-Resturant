@@ -7,7 +7,6 @@ const STORAGE_KEYS = {
   MENU_ITEMS: 'menuItems',
   RESERVATIONS: 'reservations',
 };
-
 /**
  * Safely parse JSON from localStorage
  * @param {string} key - Storage key
@@ -22,7 +21,6 @@ const safeGet = (key) => {
     return null;
   }
 };
-
 /**
  * Safely save data to localStorage
  * @param {string} key - Storage key
