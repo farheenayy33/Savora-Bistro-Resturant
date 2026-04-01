@@ -5,6 +5,7 @@ import AdminMenuManager from '../components/AdminMenuManager';
 import AdminReservations from '../components/AdminReservations';
 import AnimatedButton from '../components/AnimatedButton';
 import { getReservations, getContactSubmissions } from '../utils/localStorageHelpers';
+
 const Admin = () => {
   const { adminLoggedIn, loginAdmin, logoutAdmin, menuItems } = useApp();
   const navigate = useNavigate();
