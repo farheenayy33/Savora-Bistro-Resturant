@@ -7,6 +7,7 @@ import AnimatedButton from '../components/AnimatedButton';
 import AnimatedSection from '../components/AnimatedSection';
 const Menu = () => {
   const { menuItems, cart, removeFromCart, updateCartQuantity, getCartTotal, showCart, setShowCart, showToastMessage, clearCart } = useApp();
+  
   const [activeCategory, setActiveCategory] = useState('All');
   const navigate = useNavigate();
   const categories = useMemo(() => {
