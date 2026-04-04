@@ -14,7 +14,7 @@ export default defineConfig({
     target: 'ES2020',
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild'  ,
     terserOptions: {
       compress: {
         drop_console: true,
@@ -32,3 +32,4 @@ export default defineConfig({
     include: ['react', 'react-dom'],
   },
 });
+    
