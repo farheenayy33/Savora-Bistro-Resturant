@@ -40,6 +40,5 @@ const AnimatedButton = memo(({
     prevProps.ariaLabel === nextProps.ariaLabel
   );
 });
-
 AnimatedButton.displayName = 'AnimatedButton';
 export default AnimatedButton;
