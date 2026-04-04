@@ -103,6 +103,6 @@ const Footer = () => {
   );
 };
 
-export default memo(Footer); currentYear
+export default memo(Footer)
 
 
