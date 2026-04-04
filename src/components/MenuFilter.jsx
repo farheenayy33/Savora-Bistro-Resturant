@@ -31,3 +31,5 @@ const MenuFilter = ({ categories, activeCategory, onFilterChange }) => {
 };
 
 export default MenuFilter;
+
+
