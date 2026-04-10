@@ -250,5 +250,3 @@ const AdminMenuManager = () => {
 };
 
 export default AdminMenuManager;
-
-
