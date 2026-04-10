@@ -53,3 +53,4 @@ const MenuItemCard = memo(({ item }) => {
 
 MenuItemCard.displayName = 'MenuItemCard';
 export default MenuItemCard;
+
